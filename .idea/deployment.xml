@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Remote Host (fd3eadff-da97-4019-b432-fc46d6b991b4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.AEDoa7qqi6" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-default-remote-host" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="WSL (2e2fc3d1-1a0d-467c-8a49-bed6247312fa)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

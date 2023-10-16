@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include/lwp.h
+
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c
+include/lwp.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include/lwp.h
+stdio.h
+-
+stdlib.h
+-
+
