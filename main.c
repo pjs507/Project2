@@ -1,71 +1,110 @@
-#include "include/lwp.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "lwp.h"
 
 #define MAX_THREADS 100
 
-// Thread queue as an array
-thread threadQueue[MAX_THREADS];
-int currentThreadIndex = 0;  // Index of the current thread
-int count = 0;  // Number of threads in the queue
+typedef struct Node {
+   thread data;
+   struct Node* next;
+} Node;
 
-scheduler current_scheduler = NULL;
+typedef struct {
+   Node* head;
+   Node* tail;
+   int count;
+} ThreadQueue;
 
-// Initialize the queue
+ThreadQueue threadQueue;
+scheduler activeScheduler = NULL;
+thread current_thread = NULL; // Global variable to keep track of the current thread
+tid_t last_tid = 0;
+
+// Initialize the thread queue
 void initQueue() {
    printf("Initializing queue...\n");
-   currentThreadIndex = 0;
-   count = 0;
+   threadQueue.head = NULL;
+   threadQueue.tail = NULL;
+   threadQueue.count = 0;
 }
 
-// Add a thread to the queue
+// Add a new thread to the queue
 void enqueue(thread new_thread) {
    printf("Enqueueing thread %lu...\n", new_thread->tid);
-   threadQueue[count++] = new_thread;
+   Node* newNode = malloc(sizeof(Node));
+   newNode->data = new_thread;
+   newNode->next = NULL;
+
+   if (threadQueue.head == NULL) {
+      threadQueue.head = newNode;
+      threadQueue.tail = newNode;
+   } else {
+      threadQueue.tail->next = newNode;
+      threadQueue.tail = newNode;
+   }
+   threadQueue.count++;
 }
 
 // Get the next thread to run
 thread next() {
    printf("Getting next thread to run...\n");
-   if (count == 0) {
+   if (threadQueue.count == 0) {
       return NULL;
    }
-   thread nextThread = threadQueue[currentThreadIndex];
-   currentThreadIndex = (currentThreadIndex + 1) % count;
+   Node* temp = threadQueue.head;
+   thread nextThread = temp->data;
+   threadQueue.head = threadQueue.head->next;
+   free(temp);
+   threadQueue.count--;
    return nextThread;
 }
 
-// Get the number of threads in the queue
+// Get the length of the queue
 int qlen() {
    printf("Getting queue length...\n");
-   return count;
+   return threadQueue.count;
 }
 
-// Initialize scheduler
+// Remove a thread from the queue
+void remove_thread(thread victim_thread) {
+   printf("Removing thread %lu...\n", victim_thread->tid);
+   Node* temp = threadQueue.head;
+   Node* prev = NULL;
+
+   while (temp != NULL) {
+      if (temp->data->tid == victim_thread->tid) {
+         if (prev == NULL) {
+            threadQueue.head = temp->next;
+         } else {
+            prev->next = temp->next;
+         }
+         free(temp);
+         threadQueue.count--;
+         return;
+      }
+      prev = temp;
+      temp = temp->next;
+   }
+}
+
+// Initialize scheduler-specific structures
 void init() {
    printf("Initializing scheduler...\n");
    initQueue();
 }
 
-// Shutdown scheduler
+// Clean up resources and free memory
 void shutdown() {
    printf("Shutting down scheduler...\n");
-   // TODO: Clean up any resources
+   // TODO: Free all allocated memory
 }
 
-// Admit a new thread
-void admit(thread new_thread) {
+// Admit a new thread to the scheduler
+void admit(thread newThread) {
    printf("Admitting new thread...\n");
-   enqueue(new_thread);
+   enqueue(newThread);
 }
 
-// Remove a thread
-void remove_thread(thread victim_thread) {  // Renamed to remove_thread
-   printf("Removing thread %lu...\n", victim_thread->tid);
-   // TODO: Implement logic to remove thread
-}
-
-// Scheduler struct
 struct scheduler rr_scheduler = {
    .init = init,
    .shutdown = shutdown,
@@ -75,41 +114,57 @@ struct scheduler rr_scheduler = {
    .qlen = qlen
 };
 
-
-// Function to set the scheduler
-void lwp_set_scheduler(scheduler new_scheduler) {
+// Set the scheduler
+void lwp_set_scheduler(scheduler newScheduler) {
    printf("Setting the scheduler...\n");
-
-   // TODO: Initialize the new scheduler
-   // TODO: Transfer threads from the old scheduler to the new one
-   // TODO: Shutdown the old scheduler
-
-   current_scheduler = new_scheduler;
-
+   activeScheduler = newScheduler;
    printf("Scheduler set successfully.\n");
 }
 
-// Function to start the LWP (Lightweight Process)
-void lwp_start() {
-   printf("Starting the LWP...\n");
+// Create a new thread
+tid_t lwp_create(lwpfun function, void *arg) {
+   // Allocate memory for the new thread context
+   thread new_thread = malloc(sizeof(context));
+   if (new_thread == NULL) {
+      return NO_THREAD; // Return an error code if allocation fails
+   }
 
-   // TODO: Convert the calling thread into a LWP
-   // TODO: Admit it to the scheduler
-   // TODO: Yield control to the next thread as indicated by the scheduler
+   // Initialize the thread context
+   // TODO: initialize with correct stack
+   new_thread->tid = ++last_tid;  // Assign a unique thread ID
+   new_thread->stacksize = 8; /* some stack size, e.g., 4096 */;
+   new_thread->stack = malloc(new_thread->stacksize );  // Allocate stack memory
+   if (new_thread->stack == NULL) {
+      free(new_thread);
+      return NO_THREAD;  // Return an error code if stack allocation fails
+   }
+   // TODO: Initialize the registers in new_thread->state
+   // TODO: Set up the initial stack frame to make sure the thread starts executing 'function'
 
-   printf("LWP started successfully.\n");
+   // Add the new thread to the queue
+   enqueue(new_thread);
+
+   return new_thread->tid;
 }
 
+// Exit the current thread
+void lwp_exit(int status) {
+   // TODO: Remove the current thread from the queue
+   // TODO: Free resources
+   // TODO: Switch to the next thread
+}
 
-// Main function for testing
+// Start the scheduler
+void lwp_start() {
+   printf("Starting the LWP...\n");
+   // TODO: Get the first thread from the queue and start executing it
+}
+
 int main() {
    printf("Setting scheduler...\n");
    lwp_set_scheduler(&rr_scheduler);
-
    // TODO: Create threads using lwp_create()
-
    printf("Starting LWP library...\n");
    lwp_start();
-
    return 0;
 }
