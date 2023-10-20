@@ -1,1 +1,1 @@
-/usr/bin/cc      CMakeFiles/Project2.dir/main.c.o  -o Project2 -rdynamic 
+/usr/bin/cc      CMakeFiles/Project2.dir/main.c.o CMakeFiles/Project2.dir/lwp.c.o CMakeFiles/Project2.dir/scheduler.c.o  -o Project2 -rdynamic 

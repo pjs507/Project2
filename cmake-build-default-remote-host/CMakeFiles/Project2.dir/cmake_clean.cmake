@@ -1,5 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/Project2.dir/main.c.o"
+  "CMakeFiles/Project2.dir/lwp.c.o"
+  "CMakeFiles/Project2.dir/scheduler.c.o"
   "Project2.pdb"
   "Project2"
 )

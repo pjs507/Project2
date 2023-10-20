@@ -75,14 +75,64 @@ CMakeFiles/Project2.dir/main.c.o.provides: CMakeFiles/Project2.dir/main.c.o.requ
 
 CMakeFiles/Project2.dir/main.c.o.provides.build: CMakeFiles/Project2.dir/main.c.o
 
+CMakeFiles/Project2.dir/lwp.c.o: CMakeFiles/Project2.dir/flags.make
+CMakeFiles/Project2.dir/lwp.c.o: ../lwp.c
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/Project2.dir/lwp.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/Project2.dir/lwp.c.o   -c /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c
+
+CMakeFiles/Project2.dir/lwp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project2.dir/lwp.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c > CMakeFiles/Project2.dir/lwp.c.i
+
+CMakeFiles/Project2.dir/lwp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project2.dir/lwp.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c -o CMakeFiles/Project2.dir/lwp.c.s
+
+CMakeFiles/Project2.dir/lwp.c.o.requires:
+.PHONY : CMakeFiles/Project2.dir/lwp.c.o.requires
+
+CMakeFiles/Project2.dir/lwp.c.o.provides: CMakeFiles/Project2.dir/lwp.c.o.requires
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/lwp.c.o.provides.build
+.PHONY : CMakeFiles/Project2.dir/lwp.c.o.provides
+
+CMakeFiles/Project2.dir/lwp.c.o.provides.build: CMakeFiles/Project2.dir/lwp.c.o
+
+CMakeFiles/Project2.dir/scheduler.c.o: CMakeFiles/Project2.dir/flags.make
+CMakeFiles/Project2.dir/scheduler.c.o: ../scheduler.c
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/Project2.dir/scheduler.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/Project2.dir/scheduler.c.o   -c /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c
+
+CMakeFiles/Project2.dir/scheduler.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project2.dir/scheduler.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c > CMakeFiles/Project2.dir/scheduler.c.i
+
+CMakeFiles/Project2.dir/scheduler.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project2.dir/scheduler.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c -o CMakeFiles/Project2.dir/scheduler.c.s
+
+CMakeFiles/Project2.dir/scheduler.c.o.requires:
+.PHONY : CMakeFiles/Project2.dir/scheduler.c.o.requires
+
+CMakeFiles/Project2.dir/scheduler.c.o.provides: CMakeFiles/Project2.dir/scheduler.c.o.requires
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.o.provides.build
+.PHONY : CMakeFiles/Project2.dir/scheduler.c.o.provides
+
+CMakeFiles/Project2.dir/scheduler.c.o.provides.build: CMakeFiles/Project2.dir/scheduler.c.o
+
 # Object files for target Project2
 Project2_OBJECTS = \
-"CMakeFiles/Project2.dir/main.c.o"
+"CMakeFiles/Project2.dir/main.c.o" \
+"CMakeFiles/Project2.dir/lwp.c.o" \
+"CMakeFiles/Project2.dir/scheduler.c.o"
 
 # External object files for target Project2
 Project2_EXTERNAL_OBJECTS =
 
 Project2: CMakeFiles/Project2.dir/main.c.o
+Project2: CMakeFiles/Project2.dir/lwp.c.o
+Project2: CMakeFiles/Project2.dir/scheduler.c.o
 Project2: CMakeFiles/Project2.dir/build.make
 Project2: CMakeFiles/Project2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable Project2"
@@ -93,6 +143,8 @@ CMakeFiles/Project2.dir/build: Project2
 .PHONY : CMakeFiles/Project2.dir/build
 
 CMakeFiles/Project2.dir/requires: CMakeFiles/Project2.dir/main.c.o.requires
+CMakeFiles/Project2.dir/requires: CMakeFiles/Project2.dir/lwp.c.o.requires
+CMakeFiles/Project2.dir/requires: CMakeFiles/Project2.dir/scheduler.c.o.requires
 .PHONY : CMakeFiles/Project2.dir/requires
 
 CMakeFiles/Project2.dir/clean:

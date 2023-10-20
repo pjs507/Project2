@@ -4,7 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
+  "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/lwp.c.o"
   "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/main.c.o"
+  "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/scheduler.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

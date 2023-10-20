@@ -26,6 +26,9 @@
          <Compiler>
             <Add directory="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include" />
             <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux" />
             <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include" />
             <Add directory="/usr/local/include" />
          </Compiler>
@@ -45,6 +48,9 @@
          <Compiler>
             <Add directory="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include" />
             <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux" />
             <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include" />
             <Add directory="/usr/local/include" />
          </Compiler>
@@ -66,7 +72,13 @@
          </MakeCommands>
       </Target>
       </Build>
+      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c">
+      </Unit>
       <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c">
+      </Unit>
+      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c">
+      </Unit>
+      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.h">
       </Unit>
       <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

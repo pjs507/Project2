@@ -6,13 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include/lwp.h
+../include/fp.h
+stdint.h
+-
+
+../include/lwp.h
+sys/types.h
+-
+fp.h
+-
 
 /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c
-include/lwp.h
-/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/include/lwp.h
 stdio.h
 -
 stdlib.h
 -
+lwp.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.h
 

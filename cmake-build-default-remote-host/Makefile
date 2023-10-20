@@ -101,14 +101,109 @@ depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named Project2
+
+# Build rule for target.
+Project2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Project2
+.PHONY : Project2
+
+# fast build rule for target.
+Project2/fast:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/build
+.PHONY : Project2/fast
+
+lwp.o: lwp.c.o
+.PHONY : lwp.o
+
+# target to build an object file
+lwp.c.o:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/lwp.c.o
+.PHONY : lwp.c.o
+
+lwp.i: lwp.c.i
+.PHONY : lwp.i
+
+# target to preprocess a source file
+lwp.c.i:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/lwp.c.i
+.PHONY : lwp.c.i
+
+lwp.s: lwp.c.s
+.PHONY : lwp.s
+
+# target to generate assembly for a file
+lwp.c.s:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/lwp.c.s
+.PHONY : lwp.c.s
+
+main.o: main.c.o
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/main.c.s
+.PHONY : main.c.s
+
+scheduler.o: scheduler.c.o
+.PHONY : scheduler.o
+
+# target to build an object file
+scheduler.c.o:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.o
+.PHONY : scheduler.c.o
+
+scheduler.i: scheduler.c.i
+.PHONY : scheduler.i
+
+# target to preprocess a source file
+scheduler.c.i:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.i
+.PHONY : scheduler.c.i
+
+scheduler.s: scheduler.c.s
+.PHONY : scheduler.s
+
+# target to generate assembly for a file
+scheduler.c.s:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.s
+.PHONY : scheduler.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Project2"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... lwp.o"
+	@echo "... lwp.i"
+	@echo "... lwp.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... scheduler.o"
+	@echo "... scheduler.i"
+	@echo "... scheduler.s"
 .PHONY : help
 
 

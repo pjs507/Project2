@@ -56,6 +56,41 @@ CMAKE_SOURCE_DIR = /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6
 CMAKE_BINARY_DIR = /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host
 
 #=============================================================================
+# Target rules for target CMakeFiles/Project2.dir
+
+# All Build rule for target.
+CMakeFiles/Project2.dir/all:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/depend
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles  1 2 3
+	@echo "Built target Project2"
+.PHONY : CMakeFiles/Project2.dir/all
+
+# Include target in all.
+all: CMakeFiles/Project2.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Project2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Project2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles 0
+.PHONY : CMakeFiles/Project2.dir/rule
+
+# Convenience name for target.
+Project2: CMakeFiles/Project2.dir/rule
+.PHONY : Project2
+
+# clean rule for target.
+CMakeFiles/Project2.dir/clean:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/clean
+.PHONY : CMakeFiles/Project2.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Project2.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.
