@@ -8,7 +8,6 @@
 
 int main() {
    printf("Setting scheduler...\n");
-   // TODO: Create threads using lwp_create()
    initQueue();
    printf("Starting LWP library...\n");
    lwp_start();
