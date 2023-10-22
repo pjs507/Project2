@@ -2,7 +2,7 @@
 #include "lwp.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "rr.h"
+#include "scheduler.h"
 
 // Create a new thread
 tid_t lwp_create(lwpfun function, void *arg) {

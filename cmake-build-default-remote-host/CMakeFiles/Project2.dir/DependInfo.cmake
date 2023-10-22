@@ -6,7 +6,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_DEPENDS_CHECK_C
   "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/lwp.c.o"
   "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/main.c.o"
-  "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/scheduler.c.o"
+  "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/rr.c" "/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/cmake-build-default-remote-host/CMakeFiles/Project2.dir/rr.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

@@ -16,11 +16,33 @@ sys/types.h
 fp.h
 -
 
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.c
+lwp.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.h
+stdlib.h
+-
+stdio.h
+-
+scheduler.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.h
+
 /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c
 stdio.h
 -
 stdlib.h
 -
+lwp.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.h
+
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c
+scheduler.h
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.h
 lwp.h
 /home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/lwp.h
 

@@ -76,9 +76,9 @@
       </Unit>
       <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/main.c">
       </Unit>
-      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.c">
+      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/rr.c">
       </Unit>
-      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/scheduler.h">
+      <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/rr.h">
       </Unit>
       <Unit filename="/home/psoetaer/csc453/tmp/tmp.AEDoa7qqi6/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

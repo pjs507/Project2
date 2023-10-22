@@ -162,29 +162,29 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/main.c.s
 .PHONY : main.c.s
 
-scheduler.o: scheduler.c.o
-.PHONY : scheduler.o
+rr.o: rr.c.o
+.PHONY : rr.o
 
 # target to build an object file
-scheduler.c.o:
-	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.o
-.PHONY : scheduler.c.o
+rr.c.o:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/rr.c.o
+.PHONY : rr.c.o
 
-scheduler.i: scheduler.c.i
-.PHONY : scheduler.i
+rr.i: rr.c.i
+.PHONY : rr.i
 
 # target to preprocess a source file
-scheduler.c.i:
-	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.i
-.PHONY : scheduler.c.i
+rr.c.i:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/rr.c.i
+.PHONY : rr.c.i
 
-scheduler.s: scheduler.c.s
-.PHONY : scheduler.s
+rr.s: rr.c.s
+.PHONY : rr.s
 
 # target to generate assembly for a file
-scheduler.c.s:
-	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/scheduler.c.s
-.PHONY : scheduler.c.s
+rr.c.s:
+	$(MAKE) -f CMakeFiles/Project2.dir/build.make CMakeFiles/Project2.dir/rr.c.s
+.PHONY : rr.c.s
 
 # Help Target
 help:
@@ -201,9 +201,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... scheduler.o"
-	@echo "... scheduler.i"
-	@echo "... scheduler.s"
+	@echo "... rr.o"
+	@echo "... rr.i"
+	@echo "... rr.s"
 .PHONY : help
 
 

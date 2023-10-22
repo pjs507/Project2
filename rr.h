@@ -1,8 +1,8 @@
 //
 // Created by pauls on 10/20/2023.
 //
-#ifndef PROJECT2_SCHEDULER_H
-#define PROJECT2_SCHEDULER_H
+#ifndef PROJECT2_RR_H
+#define PROJECT2_RR_H
 
 #include "lwp.h"
 
@@ -35,4 +35,4 @@ void admit(thread newThread);
 
 
 
-#endif //PROJECT2_SCHEDULER_H
+#endif //PROJECT2_RR_H

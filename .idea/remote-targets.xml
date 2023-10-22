@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="psoetaer@unix1.csc.calpoly.edu:22" type="ssh/sftp" uuid="f6cd3973-c07b-404d-8d7e-3042cb260c2a">
+        <config>
+          <option name="projectRootOnTarget" value="/home/psoetaer/csc453/Project2/Asgn2/demos" />
+          <option name="serverName" value="psoetaer@unix1.csc.calpoly.edu:22 password" />
+        </config>
+      </target>
+    </targets>
+  </component>
+</project>
