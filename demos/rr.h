@@ -19,7 +19,6 @@ typedef struct {
 
 extern ThreadQueue threadQueue;
 extern scheduler activeScheduler;
-extern thread current_thread;
 extern tid_t last_tid;
 
 void initQueue();

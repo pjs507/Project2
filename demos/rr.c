@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 ThreadQueue threadQueue;
-thread current_thread = NULL;
 tid_t last_tid = 0;
 struct scheduler rr_publish = {NULL, NULL, rr_admit, rr_remove, rr_next, rr_qlen};
 scheduler activeScheduler = &rr_publish;
@@ -18,7 +17,6 @@ void initQueue() {
 
 // Add a new thread to the queue
 void enqueue_thread(thread new_thread) {
-   printf("Enqueueing thread %lu...\n", new_thread->tid);
    Node *newNode = malloc(sizeof(Node));
    newNode->data = new_thread;
    newNode->next = NULL;
