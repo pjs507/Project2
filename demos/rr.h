@@ -3,7 +3,7 @@
 //
 #ifndef PROJECT2_RR_H
 #define PROJECT2_RR_H
-
+#include <stddef.h>
 #include "lwp.h"
 
 typedef struct Node {
@@ -23,15 +23,16 @@ extern thread current_thread;
 extern tid_t last_tid;
 
 void initQueue();
-void enqueue(thread new_thread);
-thread next();
-int qlen();
-void remove_thread(thread victim_thread);
-void init();
+void rr_admit(thread new_thread);
+thread rr_next();
+int rr_qlen();
+void rr_remove(thread victim_thread);
+void init_thread();
 void shutdown();
 void admit(thread newThread);
 
-
+extern struct scheduler rr_publish;
+extern scheduler activeScheduler;
 
 
 

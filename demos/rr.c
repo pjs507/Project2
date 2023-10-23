@@ -3,9 +3,10 @@
 #include <stdlib.h>
 
 ThreadQueue threadQueue;
-scheduler activeScheduler = NULL;
 thread current_thread = NULL;
 tid_t last_tid = 0;
+struct scheduler rr_publish = {NULL, NULL, rr_admit, rr_remove, rr_next, rr_qlen};
+scheduler activeScheduler = &rr_publish;
 
 // Initialize the thread queue
 void initQueue() {
@@ -16,9 +17,9 @@ void initQueue() {
 }
 
 // Add a new thread to the queue
-void enqueue(thread new_thread) {
+void enqueue_thread(thread new_thread) {
    printf("Enqueueing thread %lu...\n", new_thread->tid);
-   Node* newNode = malloc(sizeof(Node));
+   Node *newNode = malloc(sizeof(Node));
    newNode->data = new_thread;
    newNode->next = NULL;
 
@@ -33,30 +34,28 @@ void enqueue(thread new_thread) {
 }
 
 // Get the next thread to run
-thread next() {
+thread rr_next() {
    printf("Getting next thread to run...\n");
    if (threadQueue.count == 0) {
       return NULL;
    }
-   Node* temp = threadQueue.head;
+   Node *temp = threadQueue.head;
    thread nextThread = temp->data;
    threadQueue.head = threadQueue.head->next;
-   free(temp);
-   threadQueue.count--;
    return nextThread;
 }
 
 // Get the length of the queue
-int qlen() {
+int rr_qlen() {
    printf("Getting queue length...\n");
    return threadQueue.count;
 }
 
 // Remove a thread from the queue
-void remove_thread(thread victim_thread) {
+void rr_remove(thread victim_thread) {
    printf("Removing thread %lu...\n", victim_thread->tid);
-   Node* temp = threadQueue.head;
-   Node* prev = NULL;
+   Node *temp = threadQueue.head;
+   Node *prev = NULL;
 
    while (temp != NULL) {
       if (temp->data->tid == victim_thread->tid) {
@@ -75,29 +74,19 @@ void remove_thread(thread victim_thread) {
 }
 
 // Initialize scheduler-specific structures
-void init() {
+void init_thread() {
    printf("Initializing scheduler...\n");
    initQueue();
 }
 
 // Clean up resources and free memory
-void shutdown() {
+void shutdown_rr() {
    printf("Shutting down scheduler...\n");
    // TODO: Free all allocated memory
 }
 
 // Admit a new thread to the scheduler
-void admit(thread newThread) {
-   printf("Admitting new thread...\n");
-   enqueue(newThread);
+void rr_admit(thread newThread) {
+   enqueue_thread(newThread);
 }
 
-
-struct scheduler rr_scheduler = {
-   .init = init,
-   .shutdown = shutdown,
-   .admit = admit,
-   .remove = remove_thread,
-   .next = next,
-   .qlen = qlen
-};

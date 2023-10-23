@@ -108,7 +108,7 @@ int main(int argc, char *argv[]){
     s[i]->lw_pid = lwp_create((lwpfun)run_hungry_snake,(void*)(s+i));
   }
 
-  lwp_start();                    
+  lwp_start();
 
   for(i=0;i<cnt;i++)
     lwp_wait(NULL);

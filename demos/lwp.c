@@ -1,29 +1,33 @@
 // lwp.c
 #include "lwp.h"
+#include "rr.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "scheduler.h"
+#include <unistd.h>
+#include <sys/mman.h>
 
 // Create a new thread
 tid_t lwp_create(lwpfun function, void *arg) {
    // Allocate memory for the new thread context
    thread new_thread = malloc(sizeof(context));
-   if (new_thread == NULL) {
-      return NO_THREAD; // Return an error code if allocation fails
+   void* new_thread_stack = mmap(NULL, sysconf(_SC_PAGE_SIZE), PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+
+   // Check for memory allocation failures
+   if (new_thread == NULL || new_thread_stack == MAP_FAILED) {
+      return NO_THREAD;
    }
 
-   // Initialize the thread context
-   // TODO: initialize with correct stack
    new_thread->tid = ++last_tid;  // Assign a unique thread ID
-   new_thread->stacksize = 8; /* some stack size, e.g., 4096 */;
-   new_thread->stack = malloc(new_thread->stacksize );  // Allocate stack memory
-   if (new_thread->stack == NULL) {
-    }
+   new_thread->stacksize = sizeof(sysconf(_SC_PAGE_SIZE)) * activeScheduler->qlen;
+   new_thread->stack = new_thread_stack;
+   new_thread->state.fxsave = FPU_INIT;
+
    // TODO: Initialize the registers in new_thread->state
    // TODO: Set up the initial stack frame to make sure the thread starts executing 'function'
 
+
    // Add the new thread to the queue
-   enqueue(new_thread);
+   activeScheduler->admit(new_thread);
 
    return new_thread->tid;
 }
@@ -48,6 +52,9 @@ void lwp_yield(void) {
 // Start the scheduler
 void lwp_start() {
    printf("Starting the LWP...\n");
+
+
+
    // TODO: Get the first thread from the queue and start executing it
 }
 
@@ -64,6 +71,7 @@ void lwp_set_scheduler(scheduler newScheduler) {
 }
 
 scheduler lwp_get_scheduler(void) {
+   return activeScheduler;
    // ... your implementation ...
 }
 

@@ -1,1 +1,2 @@
+CMakeLists.txt not found in C:\Users\pauls\CLionProjects\CSC457\Project2 Select CMakeLists.txt
 WSL:  Configure Disable profile
