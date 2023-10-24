@@ -74,27 +74,12 @@ tid_t lwp_create(lwpfun function, void *arg) {
       return NO_THREAD;
    }
 
-// After memory allocation, print out addresses
-   fprintf(stderr, "new_thread address: %p\n", new_thread);
-   fprintf(stderr, "new_thread_stack address: %p\n", new_thread_stack);
-
-// Sanity check: Make sure all members are initialized
-   fprintf(stderr, "Sanity check: Initialized members:\n");
-   fprintf(stderr, "  new_thread->tid:    %ld\n", new_thread->tid);
-   fprintf(stderr, "  new_thread->state.rdi: %lu\n", new_thread->state.rdi);
-   fprintf(stderr, "  new_thread->stacksize: %zu\n", new_thread->stacksize);
-   fprintf(stderr, "  new_thread->stack:  %p\n", new_thread->stack);
-   fprintf(stderr, "  new_thread->state.rbp: %lu\n", new_thread->state.rbp);
-   fprintf(stderr, "  new_thread->state.rsp: %lu\n", new_thread->state.rsp);
-
-
    return new_thread->tid;
 }
 
 
 // Exit the current thread
 void lwp_exit(int status) {
-   printf("OOOHHH");
    // TODO: Remove the current thread from the queue
    // TODO: Free resources
    // TODO: Switch to the next thread
@@ -102,8 +87,16 @@ void lwp_exit(int status) {
 
 
 tid_t lwp_gettid(void) {
-   // ... your implementation ...
+   if (current_thread){
+      return current_thread->tid;
+   } else{
+      return NO_THREAD;
+   }
 }
+
+//TODO questions:
+// What is the general flow of lwp_yield, and how can I be sure to loop back to the first processes, instead of running through them and Segfaulting after 5
+// What are the uses of swap_rfiles and how are they different in lwp_start and lwp_yield? Are there other places it needs to swap?
 
 void lwp_yield(void) {
    thread old = current_thread;
@@ -112,8 +105,12 @@ void lwp_yield(void) {
    if (current_thread){
       swap_rfiles(&(old->state), &(current_thread->state));
    }
+   else{
 
-   // ... your implementation ...
+   }
+   //No threads left
+   //exit(status);
+
 }
 
 
@@ -139,27 +136,20 @@ void lwp_start()
       return;
    }
 
-   fprintf(stderr, "Got scheduler, fetching next thread...\n"); // Before getting the next thread
-
-   context *next_thread = sched->next();
+   current_thread = sched->next();
 
    // Check validity of next_thread
-   if(next_thread == NULL)
+   if(current_thread == NULL)
    {
       fprintf(stderr, "lwp_start(): No more threads left in scheduler...\n");
       return;
    }
    else
    {
-      fprintf(stderr, "next_thread address: %p\n", next_thread);
+      fprintf(stderr, "next_thread address: %p\n", current_thread);
    }
 
-   fprintf(stderr, "Got next thread, updating current_thread...\n"); // After fetching thread from scheduler
 
-   // Update active thread
-   current_thread = next_thread;
-
-   // Check if the current original context has a place to live
    if(real_context == NULL)
    {
       fprintf(stderr, "real_context is NULL, allocating memory...\n"); // Before allocating memory for real_context
@@ -181,28 +171,20 @@ void lwp_start()
       fprintf(stderr, "real_context address: %p\n", real_context);
    }
 
-   fprintf(stderr, "Switching context using swap_rfiles...\n"); // Before swapping context
-   fprintf(stderr, "Sanity check before swapping context:\n");
-   fprintf(stderr, "  real_context:       %p\n", real_context);
-   fprintf(stderr, "  real_context->state: %p\n", &(real_context->state));
-   fprintf(stderr, "  current_thread:     %p\n", current_thread);
-   fprintf(stderr, "  next_thread->state: %p\n", &(next_thread->state));
 
 // Sanity check: Ensure pointers are not NULL
-   if(real_context == NULL || current_thread == NULL || next_thread == NULL) {
+   if(real_context == NULL || current_thread == NULL) {
       fprintf(stderr, "Sanity check failed: One of the critical pointers is NULL.\n");
       return;
    }
 
-   swap_rfiles(&(real_context->state), &(next_thread->state));
+   swap_rfiles(NULL, &(current_thread->state));
 
-   fprintf(stderr, "Returned from swap_rfiles, cleaning up...\n"); // After returning from context switch
 
    free(real_context);
    real_context = NULL;
    current_thread = NULL;
 
-   fprintf(stderr, "Exiting lwp_start()...\n"); // Exit point
 }
 
 
@@ -211,6 +193,7 @@ tid_t lwp_wait(int *status) {
 }
 
 void lwp_set_scheduler(scheduler newScheduler) {
+   //TODO: add error handling
    activeScheduler = newScheduler;
 
 
@@ -221,7 +204,7 @@ scheduler lwp_get_scheduler(void) {
 }
 
 thread tid2thread(tid_t tid) {
-   // ... your implementation ...
+   //TODO: get thread given some tid. Incorporate lib_one and lib_two?
 }
 
 
