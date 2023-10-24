@@ -83,6 +83,16 @@ void lwp_exit(int status) {
    // TODO: Remove the current thread from the queue
    // TODO: Free resources
    // TODO: Switch to the next thread
+/*   thread remove_thread = current_thread;
+
+   activeScheduler->remove(remove_thread);
+   if (remove_thread) {
+      if (remove_thread->stack) {
+         free(remove_thread->stack);
+      }
+      free(remove_thread);
+   }
+   lwp_yield();*/
 }
 
 
@@ -101,15 +111,13 @@ tid_t lwp_gettid(void) {
 void lwp_yield(void) {
    thread old = current_thread;
    current_thread = activeScheduler->next();
-
    if (current_thread){
       swap_rfiles(&(old->state), &(current_thread->state));
    }
    else{
-
+      printf("NO THREAD");
+      exit(999);
    }
-   //No threads left
-   //exit(status);
 
 }
 
@@ -135,51 +143,11 @@ void lwp_start()
       fprintf(stderr, "lwp_start(): Can't find a scheduler...\n");
       return;
    }
-
-   current_thread = sched->next();
-
-   // Check validity of next_thread
-   if(current_thread == NULL)
-   {
-      fprintf(stderr, "lwp_start(): No more threads left in scheduler...\n");
-      return;
-   }
-   else
-   {
-      fprintf(stderr, "next_thread address: %p\n", current_thread);
-   }
-
-
-   if(real_context == NULL)
-   {
-      fprintf(stderr, "real_context is NULL, allocating memory...\n"); // Before allocating memory for real_context
-
-      // Allocate memory for the original context
-      real_context = malloc(sizeof(context));
-      if(real_context == NULL)
-      {
-         fprintf(stderr, "lwp_start(): Memory allocation failed.\n");
-         return;
-      }
-      else
-      {
-         fprintf(stderr, "real_context address after allocation: %p\n", real_context);
-      }
-   }
-   else
-   {
-      fprintf(stderr, "real_context address: %p\n", real_context);
-   }
-
-
-// Sanity check: Ensure pointers are not NULL
-   if(real_context == NULL || current_thread == NULL) {
-      fprintf(stderr, "Sanity check failed: One of the critical pointers is NULL.\n");
-      return;
-   }
-
-   swap_rfiles(NULL, &(current_thread->state));
-
+/*   current_thread = sched->next();
+   if (current_thread){
+      swap_rfiles(&(real_context->state), &(current_thread->state));
+   }*/
+   lwp_yield();
 
    free(real_context);
    real_context = NULL;

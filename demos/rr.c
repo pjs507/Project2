@@ -24,24 +24,31 @@ void enqueue_thread(thread new_thread) {
    if (threadQueue.head == NULL) {
       threadQueue.head = newNode;
       threadQueue.tail = newNode;
+      threadQueue.tail->next = threadQueue.head;
    } else {
       threadQueue.tail->next = newNode;
       threadQueue.tail = newNode;
+      threadQueue.tail->next = threadQueue.head;
    }
    threadQueue.count++;
 }
 
 // Get the next thread to run
 thread rr_next() {
-   printf("Getting next thread to run...\n");
    if (threadQueue.count == 0) {
       return NULL;
    }
+
    Node *temp = threadQueue.head;
    thread nextThread = temp->data;
+
+   // Move the head to the next element but maintain circularity
    threadQueue.head = threadQueue.head->next;
+   printf("next: %lu\n", nextThread->tid);
+
    return nextThread;
 }
+
 
 // Get the length of the queue
 int rr_qlen() {
